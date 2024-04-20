@@ -1,0 +1,483 @@
+.filtercar-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin-top: 150px;
+  position: relative;
+}
+
+.filtercar-container img {
+  position: absolute;
+  z-index: 10;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.filtercar-filter {
+  background-color: #d1d6da;
+  width: 240px;
+  z-index: 9;
+  border-radius: 15px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filtercar-nav {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    font-size: 15px;
+    font-family: "lexend", sans-serif;
+    font-weight: 500;
+  }
+
+  a {
+    font-size: 8px;
+    font-family: "lexend", sans-serif;
+    color: #0094ff;
+    text-decoration: none;
+  }
+}
+
+.filtercar-input-content {
+  display: flex;
+  margin-bottom: -15px;
+  padding: 0 5px;
+  gap: 60px;
+  font-size: 6px;
+  font-family: "lexend", sans-serif;
+}
+
+.filtercar-input {
+  border: 1px solid #15151530;
+  border-radius: 5px;
+  display: flex;
+
+  input[type="datetime-local"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    border: none;
+  }
+
+  select {
+    font-size: 8px;
+    border: none;
+    text-align: center;
+    -webkit-appearance: none; /* Chrome, Safari, Opera için */
+    -moz-appearance: none; /* Firefox için */
+    appearance: none;
+    /* background: url("custom-down-arrow.svg") no-repeat right; */
+    /* background-size: 12px; */
+    font-family: "lexend", sans-serif;
+    font-weight: 600;
+    background: none;
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 10px;
+  font-family: "lexend", sans-serif;
+  font-weight: 600;
+  border: none;
+  background: none;
+}
+
+.filtercar-range {
+  margin-top: 15px;
+}
+
+.range-value {
+  font-family: "lexend", sans-serif;
+  padding: 5px 8px;
+  font-size: 9px;
+  border-radius: 8px;
+  background-color: #007bff;
+  position: absolute;
+  top: -35px;
+  color: #fff;
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+.filtercar-range-header {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  h1 {
+    font-size: 8px;
+    font-family: "lexend", sans-serif;
+    font-weight: 500;
+  }
+}
+
+.filtercar-color-header {
+  h1 {
+    font-size: 8px;
+    font-family: "lexend", sans-serif;
+    font-weight: 500;
+  }
+}
+.color-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.color-option.hidden {
+  display: none;
+}
+
+.color-display {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 3px;
+}
+
+.color-name {
+  font-weight: 500;
+  font-size: 5px;
+  color: #333;
+  font-family: "lexend", sans-serif;
+}
+
+.color-option.selected .color-display {
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.all-colors {
+  color: #007bff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    font-family: "lexend", sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+  }
+}
+
+.underline {
+  width: 100%;
+  height: 1px;
+  background-color: #23232369;
+  margin-top: -15px;
+}
+
+.filtercar-insurance-header {
+  h1 {
+    font-size: 8px;
+    font-family: "lexend", sans-serif;
+    font-weight: 500;
+  }
+}
+
+.filtercar-insurance-checkbox {
+  display: flex;
+  font-size: 5px;
+  font-family: "lexend", sans-serif;
+  font-weight: 500;
+  align-items: center;
+  gap: 5px;
+
+  input {
+    width: 8px;
+    border: none;
+  }
+}
+
+.filtercar-insurance {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filtercar-search {
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.1s all ease-in-out;
+
+  a {
+    text-decoration: none;
+    font-family: "lexend", sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  a:active {
+    color: #007bff;
+    transform: translateY(5px);
+    transition: 0.1s all ease-in-out;
+  }
+
+  a:hover {
+    font-size: 18px;
+    transition: 0.1s all ease-in-out;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filtercar-container {
+    margin: 0;
+    overflow: hidden;
+    height: 650px;
+  }
+
+  .filtercar-container img {
+    width: 700px;
+    transform: translate(-174px, 315px);
+  }
+
+  .filtercar-filter {
+    width: 300px;
+    height: 580px;
+    transform: translate(-210px);
+    gap: 30px;
+    h1 {
+      font-size: 15px;
+    }
+    input {
+      font-size: 11px;
+    }
+
+    p {
+      font-size: 11px;
+      font-weight: 500;
+    }
+  }
+
+  .filtercar-nav {
+    h1 {
+      font-size: 30px;
+    }
+    a {
+      font-size: 15px;
+    }
+    align-items: center;
+  }
+
+  .color-selection-grid {
+    span {
+      font-size: 12px;
+    }
+
+    .color-display {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .all-colors {
+    span {
+      font-size: 10px;
+    }
+  }
+
+  .filtercar-insurance-checkbox {
+    font-size: 10px;
+    input {
+      width: 15px;
+    }
+  }
+
+  .filtercar-search {
+    a {
+      font-size: 25px;
+    }
+    a:active {
+      color: #007bff;
+      transform: translateY(5px);
+      transition: 0.1s all ease-in-out;
+    }
+
+    a:hover {
+      font-size: 28px;
+      transition: 0.1s all ease-in-out;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .filtercar-container {
+    margin: 0;
+    overflow: hidden;
+    height: 650px;
+  }
+
+  .filtercar-container img {
+    width: 850px;
+    transform: translate(-171px, 290px);
+  }
+
+  .filtercar-filter {
+    width: 300px;
+    height: 580px;
+    transform: translate(-300px);
+    gap: 30px;
+    h1 {
+      font-size: 15px;
+    }
+    input {
+      font-size: 11px;
+    }
+
+    p {
+      font-size: 11px;
+      font-weight: 500;
+    }
+  }
+
+  .filtercar-nav {
+    h1 {
+      font-size: 30px;
+    }
+    a {
+      font-size: 15px;
+    }
+    align-items: center;
+  }
+
+  .color-selection-grid {
+    span {
+      font-size: 12px;
+    }
+
+    .color-display {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .all-colors {
+    span {
+      font-size: 10px;
+    }
+  }
+
+  .filtercar-insurance-checkbox {
+    font-size: 10px;
+    input {
+      width: 15px;
+    }
+  }
+
+  .filtercar-search {
+    a {
+      font-size: 25px;
+    }
+    a:active {
+      color: #007bff;
+      transform: translateY(5px);
+      transition: 0.1s all ease-in-out;
+    }
+
+    a:hover {
+      font-size: 28px;
+      transition: 0.1s all ease-in-out;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filtercar-container {
+    overflow: hidden;
+    margin: 0;
+    height: 750px;
+  }
+  .filtercar-container img {
+    width: 1000px;
+    transform: translate(-90px, 386px);
+  }
+
+  .filtercar-filter {
+    margin-top: 50px;
+    width: 350px;
+    height: 650px;
+    transform: translate(-350px);
+    gap: 32px;
+    h1 {
+      font-size: 20px;
+    }
+    input {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+
+  .filtercar-nav {
+    h1 {
+      font-size: 30px;
+    }
+    a {
+      font-size: 15px;
+    }
+    align-items: center;
+  }
+
+  .color-selection-grid {
+    span {
+      font-size: 15px;
+    }
+
+    .color-display {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .all-colors {
+    span {
+      font-size: 13px;
+    }
+  }
+
+  .filtercar-insurance-checkbox {
+    font-size: 12px;
+    input {
+      width: 17px;
+    }
+  }
+
+  .filtercar-search {
+    a {
+      font-size: 30px;
+    }
+    a:active {
+      color: #007bff;
+      transform: translateY(5px);
+      transition: 0.1s all ease-in-out;
+    }
+
+    a:hover {
+      font-size: 33px;
+      transition: 0.1s all ease-in-out;
+    }
+  }
+}
