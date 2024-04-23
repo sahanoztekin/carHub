@@ -6,8 +6,23 @@ import "react-datepicker/dist/react-datepicker.css";
 import Taycan from "../../assets/img/taycan.svg";
 
 const FilterCar = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [values, setValues] = useState([10, 90]);
+  const initialStartDate = new Date();
+  const initialValues = [10, 90];
+  const initialCity = "";
+  const initialInsuranceOptions = {
+    collisionDamage: false,
+    faultPlus: false,
+  };
+
+  const [startDate, setStartDate] = useState(initialStartDate);
+  const [values, setValues] = useState(initialValues);
+  const [selectedColor, setSelectedColor] = useState("");
+  const [showAllColors, setShowAllColors] = useState(false);
+  const [selectedCity, setSelectedCity] = useState(initialCity);
+  const [insuranceOptions, setInsuranceOptions] = useState(
+    initialInsuranceOptions
+  );
+
   const colors = [
     { name: "Silver", code: "#C0C0C0" },
     { name: "White", code: "#FFFFFF" },
@@ -18,8 +33,26 @@ const FilterCar = () => {
     { name: "Yellow", code: "#FFFF00" },
     { name: "Navy", code: "#000080" },
   ];
-  const [selectedColor, setSelectedColor] = useState("");
-  const [showAllColors, setShowAllColors] = useState(false);
+
+  const handleReset = () => {
+    setStartDate(initialStartDate);
+    setValues(initialValues);
+    setSelectedColor("");
+    setShowAllColors(false);
+    setSelectedCity(initialCity);
+    setInsuranceOptions(initialInsuranceOptions);
+  };
+
+  const handleSubmit = () => {
+    const searchParameters = {
+      startDate,
+      values,
+      selectedCity,
+      selectedColor,
+      insuranceOptions,
+    };
+    console.log("search parameters:", searchParameters);
+  };
 
   return (
     <div className="filtercar-container">
@@ -27,7 +60,7 @@ const FilterCar = () => {
       <div className="filtercar-filter">
         <div className="filtercar-nav">
           <h1>Filters</h1>
-          <a href="#">Reset</a>
+          <button onClick={handleReset}>Reset</button>
         </div>
         <div className="filtercar-input-content">
           <p>pick-up</p>
@@ -47,6 +80,8 @@ const FilterCar = () => {
             class="proje-select"
             name="project"
             id="project-select"
+            value={selectedCity}
+            onChange={(e) => setSelectedCity(e.target.value)}
             selected=""
           >
             <option value="">⚲</option>
@@ -147,12 +182,34 @@ const FilterCar = () => {
             <h1>Car Insurance</h1>
           </div>
           <div className="filtercar-insurance-checkbox">
-            <input type="checkbox" /> <span>Waiver of collision damage</span>
-            <input type="checkbox" /> <span>Fault Plus</span>
+            <input
+              type="checkbox"
+              checked={insuranceOptions.collisionDamage}
+              onChange={() =>
+                setInsuranceOptions({
+                  ...insuranceOptions,
+                  collisionDamage: !insuranceOptions.collisionDamage,
+                })
+              }
+            />{" "}
+            <span>Waiver of collision damage</span>
+            <input
+              type="checkbox"
+              checked={insuranceOptions.faultPlus}
+              onChange={() =>
+                setInsuranceOptions({
+                  ...insuranceOptions,
+                  faultPlus: !insuranceOptions.faultPlus,
+                })
+              }
+            />{" "}
+            <span>Fault Plus</span>
           </div>
         </div>
         <div className="filtercar-search">
-          <a href="#">SEARCH</a>
+          <a onClick={handleSubmit} href="#">
+            SEARCH
+          </a>
         </div>
       </div>
     </div>

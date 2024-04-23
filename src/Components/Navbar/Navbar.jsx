@@ -10,6 +10,7 @@ const Navbar = () => {
   const [name, setName] = useState("");
   const [modalType, setModalType] = useState("");
   const [rentedCars, setRentedCars] = useState([]);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   useEffect(() => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -24,8 +25,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setUser(null);
-    setShowModal(false);
-    alert("You have logged out successfully!");
+    setShowLogoutConfirm(false);
   };
 
   const handleSignUp = (e) => {
@@ -90,7 +90,10 @@ const Navbar = () => {
             >
               {user.name}
             </span>
-            <button className="modal-content-logout" onClick={handleLogout}>
+            <button
+              className="modal-content-logout"
+              onClick={() => setShowLogoutConfirm(true)}
+            >
               X
             </button>
           </>
@@ -208,6 +211,27 @@ const Navbar = () => {
               <button className="modal-content-close" onClick={closeModal}>
                 Close
               </button>
+            </div>
+          </div>
+        )}
+        {showLogoutConfirm && (
+          <div className="modal" onClick={() => setShowLogoutConfirm(false)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <p>Do you want to log out?</p>
+              <div className="modal-content-logout-button">
+                <button
+                  className="modal-content-logout-button-yes"
+                  onClick={handleLogout}
+                >
+                  Yes
+                </button>
+                <button
+                  className="modal-content-logout-button-no"
+                  onClick={() => setShowLogoutConfirm(false)}
+                >
+                  No
+                </button>
+              </div>
             </div>
           </div>
         )}

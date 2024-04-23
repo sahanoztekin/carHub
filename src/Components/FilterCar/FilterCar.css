@@ -35,11 +35,19 @@
     font-weight: 500;
   }
 
-  a {
-    font-size: 8px;
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 12px;
     font-family: "lexend", sans-serif;
     color: #0094ff;
     text-decoration: none;
+    transition: all 0.1s ease-in-out;
+  }
+
+  button:hover {
+    font-size: 13px;
+    transition: all 0.1s ease-in-out;
   }
 }
 
