@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../../assets/img/logo.svg";
+import { v4 as uuidv4 } from "uuid";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -13,12 +14,21 @@ const Navbar = () => {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   useEffect(() => {
+    const allRentedCars = JSON.parse(
+      localStorage.getItem("rentedCars") ?? "[]"
+    );
+
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    console.log(loggedInUser);
     if (loggedInUser) {
       setUser(loggedInUser);
       setEmail(loggedInUser.email);
       setName(loggedInUser.name);
-      setRentedCars(loggedInUser.rentedCars || []);
+      const myRentedCars = allRentedCars.filter(
+        (car) => car?.userId === loggedInUser?.id
+      );
+      console.log(myRentedCars);
+      setRentedCars(myRentedCars);
     }
   }, []);
 
@@ -37,8 +47,10 @@ const Navbar = () => {
     }
 
     const userData = { email, password, name, rentedCars: [] };
-    localStorage.setItem(email, JSON.stringify(userData));
-    localStorage.setItem("loggedInUser", JSON.stringify(userData));
+    const userId = uuidv4();
+    const _userData = { id: userId, ...userData };
+    localStorage.setItem(email, JSON.stringify(_userData));
+    localStorage.setItem("loggedInUser", JSON.stringify(_userData));
     setUser(userData);
     setShowModal(false);
     alert("User registered successfully!");
@@ -55,6 +67,7 @@ const Navbar = () => {
     } else {
       alert("Invalid email or password!");
     }
+    localStorage.setItem("userId", uuid);
   };
 
   const handleEdit = (e) => {
@@ -170,7 +183,10 @@ const Navbar = () => {
                   {rentedCars.length > 0 && (
                     <ul>
                       {rentedCars.map((car) => (
-                        <li key={car}>{car}</li>
+                        <li key={car.userId}>
+                          Rented Car: {car.carModel} <br />
+                          Return: {car.endDate}
+                        </li>
                       ))}
                     </ul>
                   )}

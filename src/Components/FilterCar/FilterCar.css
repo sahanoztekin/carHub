@@ -396,6 +396,7 @@
   .filtercar-search {
     a {
       font-size: 25px;
+      cursor: pointer;
     }
     a:active {
       color: #007bff;

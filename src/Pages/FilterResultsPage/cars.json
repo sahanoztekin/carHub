@@ -1,0 +1,68 @@
+{
+    "cars": [
+      {
+        "name": "LAMBORGHINI",
+        "img": "LAMBORGHINI",
+        "year": 2023,
+        "detail": "The Lamborghini Aventador is a mid-engine sports car produced by the Italian automotive manufacturer Lamborghini...",
+        "type": "Sports",
+        "color": "yellow",
+        "price": 119
+      },
+      {
+        "name": "FERRARI",
+        "img": "FERRARI",
+        "year": 2021,
+        "detail": "The Ferrari 488 GTB is a mid-engine sports car produced by the Italian automotive manufacturer Ferrari...",
+        "color": "silver",
+        "type": "Sports",
+        "price": 150
+      },
+      {
+        "name": "PORSCHE",
+        "img": "PORSCHE",
+        "year": 2023,
+        "detail": "Porsche AG veya sadece Porsche 1947 yılında Ferdinand Porsche'nın oğlu Ferry Porsche tarafından Stuttgart'ta kurulmuş olan spor araba firmasıdır.",
+        "color": "red",
+        "type": "Sports",
+        "price": 120
+      },
+      {
+        "name": "BUGATTI",
+        "img": "BUGATTI",
+        "year": 2023,
+        "detail": "Automobiles Ettore Bugatti, yüksek performanslı otomobil üreten Alman, ardından Fransız üreticiydi.",
+        "color": "black",
+        "type": "Sports",
+        "price": 210
+      },
+      {
+        "name": "FERRARI",
+        "img": "WFERRARI",
+        "year": 2023,
+        "detail": "The Ferrari 488 GTB is a mid-engine sports car produced by the Italian automotive manufacturer Ferrari...",
+        "color": "white",
+        "type": "Sports",
+        "price": 250
+      },
+      {
+        "name": "MERCEDES",
+        "img": "MERCEDES",
+        "year": 2021,
+        "detail": "Mercedes bilmem ne bla bla bla bilu bili bulu buraya yazıyorum bir kaç yazı ki deneme olsun bla bla bla",
+        "color": "brown",
+        "type": "Sports",
+        "price": 150
+      },
+      {
+        "name": "FERRARI",
+        "img": "BFERRARI",
+        "year": 2021,
+        "detail": "The Ferrari 488 GTB is a mid-engine sports car produced by the Italian automotive manufacturer Ferrari...",
+        "color": "blue",
+        "type": "Sports",
+        "price": 120
+      }
+    ]
+  }
+  

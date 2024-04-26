@@ -3,18 +3,22 @@ import "./FilterCar.css";
 import DatePicker from "react-datepicker";
 import { Range, getTrackBackground } from "react-range";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
 import Taycan from "../../assets/img/taycan.svg";
 
 const FilterCar = () => {
   const initialStartDate = new Date();
-  const initialValues = [10, 90];
+  const initialEndDate = new Date();
+  const initialValues = [0, 1000];
   const initialCity = "";
   const initialInsuranceOptions = {
     collisionDamage: false,
     faultPlus: false,
   };
 
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(initialStartDate);
+  const [endDate, setEndDate] = useState(initialEndDate);
   const [values, setValues] = useState(initialValues);
   const [selectedColor, setSelectedColor] = useState("");
   const [showAllColors, setShowAllColors] = useState(false);
@@ -44,14 +48,10 @@ const FilterCar = () => {
   };
 
   const handleSubmit = () => {
-    const searchParameters = {
-      startDate,
-      values,
-      selectedCity,
-      selectedColor,
-      insuranceOptions,
-    };
-    console.log("search parameters:", searchParameters);
+    navigate({
+      pathname: "/filter-results",
+      search: `?startDate=${startDate}&endDate=${endDate}&minPrice=${values[0]}&maxPrice=${values[1]}&cityName=${selectedCity}&colorName=${selectedColor}&collisionDamage=${insuranceOptions.collisionDamage}&faultPlus=${insuranceOptions.faultPlus}`,
+    });
   };
 
   return (
@@ -89,8 +89,8 @@ const FilterCar = () => {
             <option value="bursa">Bursa</option>
           </select>
           <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
             timeInputLabel="Saat:"
             dateFormat="dd/MM/yyyy h:mm aa"
             showTimeInput
@@ -104,8 +104,8 @@ const FilterCar = () => {
           <div className="filtercar-range-check">
             <Range
               step={1}
-              min={0}
-              max={100}
+              min={initialValues[0]}
+              max={initialValues[1]}
               values={values}
               onChange={(values) => setValues(values)}
               renderTrack={({ props, children }) => (
@@ -120,8 +120,8 @@ const FilterCar = () => {
                     background: getTrackBackground({
                       values: values,
                       colors: ["#fff", "#007bff", "#fff"],
-                      min: 0,
-                      max: 100,
+                      min: initialValues[0],
+                      max: initialValues[1],
                     }),
                   }}
                 >
@@ -173,7 +173,7 @@ const FilterCar = () => {
         </div>
         {!showAllColors && (
           <div className="all-colors" onClick={() => setShowAllColors(true)}>
-            <span>All Colors</span>
+            <span>Show All Colors</span>
           </div>
         )}
         <div className="underline"></div>
@@ -207,9 +207,7 @@ const FilterCar = () => {
           </div>
         </div>
         <div className="filtercar-search">
-          <a onClick={handleSubmit} href="#">
-            SEARCH
-          </a>
+          <a onClick={handleSubmit}>SEARCH</a>
         </div>
       </div>
     </div>
